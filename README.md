@@ -1,10 +1,10 @@
-#Project Overview
+Project Overview:
 
 The goal of this project is to understand and highlight the experiences of female students in data science programs. By analyzing survey data, we can identify key insights and trends that can help support their growth in the field.
 
-#Data
+Data
 
-We used three main datasets:
+I used three main datasets:
 
 SurveySchema.csv: Contains the structure and questions of the survey.
 freeFormResponses.csv: Contains open-ended responses from the survey participants.
@@ -12,11 +12,11 @@ multipleChoiceResponses.csv: Contains multiple-choice responses from the survey 
 
 
 
-#Career Aspirations
+Career Aspirations:
 Many students aim to become data scientists, solving real-world problems.
 There is significant interest in research and academia, contributing to the advancement of data science.
 
-#Job Satisfaction
+Job Satisfaction:
 Job satisfaction levels vary; some students are content with their current roles, while others seek more fulfilling opportunities.
 
 #Challenges
