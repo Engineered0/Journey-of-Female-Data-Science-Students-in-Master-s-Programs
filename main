@@ -1,0 +1,48 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from wordcloud import WordCloud
+
+# Load datasets
+free_form_responses = pd.read_csv('/mnt/data/freeFormResponses.csv')
+multiple_choice_responses = pd.read_csv('/mnt/data/multipleChoiceResponses.csv')
+survey_schema = pd.read_csv('/mnt/data/SurveySchema.csv')
+
+# Display basic info about the datasets
+print(free_form_responses.head())
+print(multiple_choice_responses.head())
+print(survey_schema.head())
+
+
+# Basic EDA
+print(multiple_choice_responses.info())
+print(multiple_choice_responses.describe())
+
+
+subset = multiple_choice_responses[(multiple_choice_responses['Q2'] == 'Female') & 
+                                   (multiple_choice_responses['Q4'] == "Master's degree")]
+
+
+text = ' '.join(subset['Q9'].dropna().values)
+wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+
+plt.figure(figsize=(10, 5))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.title('Word Cloud of Free Form Responses')
+plt.show()
+
+# Analyze the impact, priorities, or concerns of this group
+plt.figure(figsize=(12, 6))
+sns.countplot(y=subset['Q10'], order=subset['Q10'].value_counts().index)
+plt.title('Current Job Satisfaction')
+plt.xlabel('Count')
+plt.ylabel('Job Satisfaction Level')
+plt.show()
+
+plt.figure(figsize=(12, 6))
+sns.countplot(y=subset['Q15'], order=subset['Q15'].value_counts().index)
+plt.title('Career Aspirations')
+plt.xlabel('Count')
+plt.ylabel('Career Goal')
+plt.show()
